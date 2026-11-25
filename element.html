@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <title>Non-Metal Element Finder</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: radial-gradient(circle at top, #2b0e14 0%, #0d090c 70%);
+            color: #ffffff;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .site-nav {
+            width: min(100%, 900px);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .site-nav a {
+            color: #d7cbd0;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            letter-spacing: 1px;
+            padding: 11px 16px;
+            border: 1px solid #551001;
+            border-radius: 6px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .site-nav a:hover,
+        .site-nav a[aria-current="page"] {
+            background-color: #700918;
+            color: #ffffff;
+        }
+
+        .card {
+            width: min(100%, 620px);
+            overflow: hidden;
+            border: 2px solid #a91e05;
+            border-radius: 12px;
+            background: #17181c;
+            box-shadow: 0 0 15px rgba(255, 170, 0, 0.15);
+        }
+
+        header {
+            padding: 22px;
+            background: linear-gradient(180deg, #990f23 0%, #610512 100%);
+            text-align: center;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 26px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        header p {
+            margin-top: 6px;
+            color: #e5cbd0;
+            font-size: 14px;
+        }
+
+        main {
+            padding: 22px;
+        }
+
+        .instructions {
+            margin-bottom: 18px;
+            padding: 12px;
+            border-left: 4px solid #ff2600;
+            border-radius: 6px;
+            background: #0e1013;
+            color: #d7cbd0;
+            font-size: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 11px 12px;
+            border: 1px solid #2a2e35;
+            border-radius: 6px;
+            background: #0e1013;
+            color: #ffffff;
+            font: inherit;
+        }
+
+        input:focus {
+            border-color: #ff2600;
+            outline: 2px solid rgba(255, 38, 0, 0.2);
+        }
+
+        button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 11px;
+            border: 1.5px solid #560505;
+            border-radius: 6px;
+            background: linear-gradient(180deg, #990f23 0%, #610512 100%);
+            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: linear-gradient(180deg, #b8142c 0%, #7d0818 100%);
+        }
+
+        .message {
+            margin-top: 10px;
+            color: #ff6b6b;
+            font-size: 14px;
+        }
+
+        h2 {
+            margin: 22px 0 9px;
+            color: #ff2600;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 17px;
+        }
+
+        .result {
+            padding: 14px;
+            border-left: 4px solid #a91e05;
+            border-radius: 6px;
+            background: #0e1013;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+
+        .result[hidden] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="site-nav" aria-label="Main navigation">
+        
+        <a href="element.html" aria-current="page">Elements</a>
+        <a href="members.html">Members</a>
+        <a href="creator.html">Creator</a>
+    </nav>
+    <div class="card">
+        <header>
+            <h1>Non-Metal Elements</h1>
+            <p>Periodic table information finder</p>
+        </header>
+        <main>
+            <p class="instructions">Enter the symbol or full name of a non-metal element.</p>
+            <form id="lookup-form">
+                <label for="element_input">Element symbol or name</label>
+                <input id="element_input" type="text" placeholder="Enter a symbol or name" required>
+                <button type="submit">Check Details</button>
+            </form>
+            <p id="lookup-message" class="message" role="status" aria-live="polite"></p>
+            <h2>Result</h2>
+            <section id="result-card" class="result" aria-live="polite" hidden>
+                <div><strong>Symbol:</strong> <span id="result-symbol"></span></div>
+                <div><strong>Element:</strong> <span id="result-name"></span></div>
+                <div><strong>Atomic Number:</strong> <span id="result-number"></span></div>
+                <div><strong>Atomic Mass:</strong> <span id="result-mass"></span></div>
+            </section>
+        </main>
+    </div>
+    <script type="py" src="./element.py"></script>
+</body>
+</html>
