@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <title>Creator - Basketball Varsity</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: radial-gradient(circle at top, #2b0e14 0%, #0d090c 70%);
+            color: #ffffff;
+            font-family: 'Rajdhani', sans-serif;
+        }
+        .site-nav {
+            width: min(100%, 900px);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .site-nav a {
+            color: #d7cbd0;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            letter-spacing: 1px;
+            padding: 11px 16px;
+            border: 1px solid #551001;
+            border-radius: 6px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .site-nav a:hover,
+        .site-nav a[aria-current="page"] {
+            background-color: #700918;
+            color: #ffffff;
+        }
+        main {
+            width: min(100%, 900px);
+        }
+        .profile-header {
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        h1 {
+            color: #ff2600;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 26px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 8px rgba(255, 13, 0, 0.4);
+        }
+        .profile-header p {
+            margin-top: 8px;
+            color: #8c8189;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .profile-card {
+            padding: 26px;
+            border: 2px solid #a91e05;
+            border-radius: 12px;
+            background: #17181c;
+            box-shadow: 0 0 15px rgba(255, 170, 0, 0.15);
+        }
+        h2 {
+            margin-bottom: 14px;
+            color: #ff2600;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 17px;
+            letter-spacing: 1px;
+        }
+        .about {
+            margin-bottom: 24px;
+            color: #d7cbd0;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .detail {
+            padding: 14px;
+            border-left: 3px solid #a91e05;
+            border-radius: 6px;
+            background: #0e1013;
+        }
+        .detail strong {
+            display: block;
+            margin-bottom: 4px;
+            color: #ff8a75;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+        }
+        .detail span {
+            color: #ffffff;
+            font-size: 17px;
+        }
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 24px;
+            list-style: none;
+        }
+        .interests li {
+            padding: 8px 12px;
+            border: 1px solid #551001;
+            border-radius: 20px;
+            background: #0e1013;
+            color: #e0e0e0;
+        }
+        blockquote {
+            padding: 16px;
+            border-left: 4px solid #ff2600;
+            border-radius: 6px;
+            background: #0e1013;
+            color: #f0d9dd;
+            font-size: 19px;
+            font-style: italic;
+            line-height: 1.5;
+        }
+        blockquote cite {
+            display: block;
+            margin-top: 8px;
+            color: #8c8189;
+            font-size: 14px;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+    <nav class="site-nav" aria-label="Main navigation">
+        
+        <a href="element.html">Elements</a>
+        <a href="members.html">Members</a>
+        <a href="creator.html" aria-current="page">Creator</a>
+    </nav>
+    <main>
+        <header class="profile-header">
+            <h1>About the Creator</h1>
+            <p>Kenzo V. Cutamora</p>
+        </header>
+        <article class="profile-card">
+            <section class="about" aria-labelledby="about-heading">
+                <h2 id="about-heading">A Little About Me</h2>
+                <p>Hi, I'm Kenzo V. Cutamora. I enjoy staying active, gaming, and trying spicy food.</p>
+            </section>
+
+            <section aria-label="Personal details">
+                <div class="details">
+                    <div class="detail">
+                        <strong>Birthday</strong>
+                        <span>December 22, 2010</span>
+                    </div>
+                    <div class="detail">
+                        <strong>Age</strong>
+                        <span>15 years old</span>
+                    </div>
+                    <div class="detail">
+                        <strong>Favorite Food</strong>
+                        <span>Spicy food</span>
+                    </div>
+                </div>
+            </section>
+
+            <section aria-labelledby="interests-heading">
+                <h2 id="interests-heading">My Interests</h2>
+                <ul class="interests">
+                    <li>Playing basketball</li>
+                    <li>Playing golf</li>
+                    <li>Going to the gym</li>
+                    <li>Playing Valorant</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="quote-heading">
+                <h2 id="quote-heading">Favorite Quote</h2>
+                <blockquote>
+                    "If your heart is wavering, do not shoot"
+                    <cite>— JoJo's Bizarre Adventure</cite>
+                </blockquote>
+            </section>
+        </article>
+    </main>
+</body>
+</html>
